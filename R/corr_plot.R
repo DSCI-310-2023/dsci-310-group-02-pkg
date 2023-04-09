@@ -11,16 +11,28 @@
 #' @examples corr_plot(mtcars)
 
 corr_plot <- function(data){
+
+  if(!is.data.frame(data)){
+    stop("'Data' must be a dataframe")
+  }
+
+  if(nrow(data) == 0){
+    stop("'Data' must be a dataframe with rows data")
+  }
+
   pairs <- ggpairs(data, upper = list(continuous = wrap("cor", size = 2)),
                    lower = list(continuous = wrap("points", size = .01)))
+
   # adjust the titles' size and angle
   pairs <- pairs + theme(text = element_text(size=8),
                          axis.text.x = element_text(angle=90, hjust=1))
   # correlation matrix plot
   cor_pair <- ggcorr(data, label = TRUE, label_round = 2)
+
   # get the color from the correlation matrix plot
   cor_g <- ggplotGrob(cor_pair)
   colors <- cor_g$grobs[[6]]$children[[3]]$gp$fill
+
   # change the background color of matrix of plots
   idx <- 1
   c <- ncol(data)
