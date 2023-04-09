@@ -1,14 +1,7 @@
-Package: whiteclassify
-Title: What the Package Does (One Line, Title Case)
 Package: wineclassify
 Title: Create the descriptive analysis and classification model of the wine dataset
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
     person("Eric", "HUANG", , "erichsy@student.ubc.ca", role = c("aut", "cre")),
     person("Kashish", "Joshipura", , "kashishjoshipura@gmail.com", role = c("aut", "cre")),
     person("Peter", "Lee", , "leepeter718@gmail.com", role = c("aut", "cre"))
@@ -16,9 +9,11 @@ Description: This package includes the functions that can conduct the descriptiv
   analysis by creating the histogram of the count of categorical variables and the
   correlation matrix. It also provides users to create a KNN classification model 
   and assess the model's performance.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     dplyr,
-    ggplot2
+    ggplot2,
+    magrittr
