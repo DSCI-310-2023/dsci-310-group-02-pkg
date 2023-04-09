@@ -4,12 +4,18 @@
 \name{wineclassify-package}
 \alias{wineclassify}
 \alias{wineclassify-package}
-\title{wineclassify: What the Package Does (One Line, Title Case)}
+\title{wineclassify: Create the descriptive analysis and classification model of the wine dataset}
 \description{
-What the package does (one paragraph).
+This package includes the functions that can conduct the descriptive analysis by creating the histogram of the count of categorical variables and the correlation matrix. It also provides users to create a KNN classification model and assess the model's performance.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Eric HUANG \email{erichsy@student.ubc.ca}
+
+Authors:
+\itemize{
+  \item Kashish Joshipura \email{kashishjoshipura@gmail.com}
+  \item Peter Lee \email{leepeter718@gmail.com}
+}
 
 }
 \keyword{internal}

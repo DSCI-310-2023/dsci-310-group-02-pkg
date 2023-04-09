@@ -2,9 +2,9 @@ Package: wineclassify
 Title: Create the descriptive analysis and classification model of the wine dataset
 Version: 0.0.0.9000
 Authors@R: 
-    person("Eric", "HUANG", , "erichsy@student.ubc.ca", role = c("aut", "cre")),
-    person("Kashish", "Joshipura", , "kashishjoshipura@gmail.com", role = c("aut", "cre")),
-    person("Peter", "Lee", , "leepeter718@gmail.com", role = c("aut", "cre"))
+    c(person("Eric", "HUANG", , "erichsy@student.ubc.ca", role = c("aut", "cre")),
+    person("Kashish", "Joshipura", , "kashishjoshipura@gmail.com", role = c("aut")),
+    person("Peter", "Lee", , "leepeter718@gmail.com", role = c("aut")))
 Description: This package includes the functions that can conduct the descriptive
   analysis by creating the histogram of the count of categorical variables and the
   correlation matrix. It also provides users to create a KNN classification model 
