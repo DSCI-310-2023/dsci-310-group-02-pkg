@@ -2,10 +2,20 @@
 % Please edit documentation in R/corr_plot.R
 \name{corr_plot}
 \alias{corr_plot}
-\title{Title}
+\title{Create a correlation matrix plot for variable pairs}
 \usage{
 corr_plot(data)
 }
+\arguments{
+\item{data}{The dataframe}
+}
+\value{
+A correlation matrix for variable pairs in data
+}
 \description{
-Title
+This function takes the variable pairs in the data to create a correlation
+matrix with the heatmap of correlation values
+}
+\examples{
+corr_plot(mtcars)
 }

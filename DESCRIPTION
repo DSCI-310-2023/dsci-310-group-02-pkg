@@ -17,7 +17,8 @@ Imports:
     dplyr,
     GGally,
     ggplot2,
-    magrittr
+    magrittr,
+    vdiffr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
