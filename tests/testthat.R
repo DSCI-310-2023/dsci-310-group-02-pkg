@@ -9,4 +9,4 @@
 library(testthat)
 library(wineclassify)
 
-test_check("wineclassify")
+test_check("whiteclassify")
