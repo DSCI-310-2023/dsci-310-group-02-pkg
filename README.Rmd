@@ -84,3 +84,8 @@ ex_model <- model_build(ex_train, ex_recipe, "Species")
 model_results(ex_test, ex_model, "Species")
 ```
 
+## Contributing
+We welcome and appreciate the contributions to the `wineclassify` function. Please read [here](https://github.com/DSCI-310/dsci-310-group-02-pkg/blob/main/CONTRIBUTION.md) on how to contribute to the package.
+
+## License
+This package uses MIT open source license.
