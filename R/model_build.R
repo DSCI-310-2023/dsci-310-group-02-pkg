@@ -20,9 +20,21 @@
 
 model_build <- function(train_data, recipe, col){
 
+  if(!is.data.frame(train_data)){
+    stop("'train_data' must be a dataframe")
+  }
+
+  if(!is.list(recipe)){
+    stop("'recipe' must be the recipe in list type")
+  }
+
+  if(!is.character(col)){
+    stop("'col' must be the column name of the response variable in string type")
+  }
+
   neighbors <- NULL
 
-  vfold <- vfold_cv(train_data, v = 10, strata = col)
+  vfold <- vfold_cv(train_data, v = 10, strata = all_of(col))
   knn_tune <- nearest_neighbor(
     weight_func = "rectangular", neighbors = tune()) %>%
     set_engine("kknn") %>%
