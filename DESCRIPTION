@@ -20,6 +20,7 @@ Imports:
     parsnip,
     recipes,
     rsample,
+    stats,
     tune,
     vdiffr,
     workflows,

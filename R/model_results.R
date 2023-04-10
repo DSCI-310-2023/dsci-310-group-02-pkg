@@ -3,6 +3,7 @@
 #' Create the confusion matrix of the fitted KNN model to assess performance
 #'
 #' @import yardstick
+#' @importFrom stats predict
 #'
 #' @param test_data The testing data for the model
 #' @param model The fitted KNN model
@@ -25,6 +26,7 @@ prediction <- predict(model, test_data)
 bind_cols(test_data)
 test_data$pred <- prediction$.pred_class
 test_data$col <- as.factor(test_data[,col])
+pred <- NULL
 
 # Assess model accuracy and return the confusion matrix
 conf_matrix <- conf_mat(data = test_data, truth = col, estimate = pred)
