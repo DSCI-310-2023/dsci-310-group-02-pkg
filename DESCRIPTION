@@ -20,9 +20,11 @@ Imports:
     parsnip,
     recipes,
     rsample,
+    stats,
     tune,
     vdiffr,
-    workflows
+    workflows,
+    yardstick
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
