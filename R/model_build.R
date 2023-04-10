@@ -2,12 +2,14 @@
 #'
 #' Build the KNN model using the most accurate K value
 #'
+#' @import kknn
 #' @import recipes
 #' @import rsample
-#' @import parsnip
-#' @import tune
-#' @import workflows
 #' @import tidymodels
+#' @import tune
+#' @import parsnip
+#' @import workflows
+#
 #'
 #' @param train_data The training data for the model
 #' @param recipe The recipe for the data to build model
