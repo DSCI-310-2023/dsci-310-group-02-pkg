@@ -8,7 +8,15 @@
 ![](https://github.com/DSCI-310/dsci-310-group-02-pkg/actions/workflows/test-coverage.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-02-pkg/branch/main/graph/badge.svg?token=mxvyLcLIB8)](https://codecov.io/gh/DSCI-310/dsci-310-group-02-pkg)
 
-<!-- badges: end -->
+The goal of the wineclassify package aims to use R to help others
+classify the different types of quality of wine based on a numerous
+amount of variables. The package also includes functions such as
+corr_plot, hist_plot and other functions that allows the user to
+visualize and analyze the given data set. The package is similar to the
+tidyverse package as this package also uses ggplot2, tidymodels,
+recipes, workflows and etc. The wineclassify only targets the necessary
+packages used in tidyverse thus making it simplier and more
+straightforward to use. <!-- badges: end -->
 
 The goal of `wineclassify` package is to help the users conduct a KNN
 classification project from the start. It includes the functions to load
@@ -27,14 +35,14 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 #> Downloading GitHub repo DSCI-310/dsci-310-group-02-pkg@HEAD
 #> 
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>      checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpzGijmc/remotesacb047d3fdc4/DSCI-310-dsci-310-group-02-pkg-4da8e00/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpzGijmc/remotesacb047d3fdc4/DSCI-310-dsci-310-group-02-pkg-4da8e00/DESCRIPTION’
-#>   ─  preparing ‘wineclassify’:
-#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-#>   ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>   ─  building ‘wineclassify_0.0.0.9000.tar.gz’
-#>      
-#> 
+#> * checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpnOQHcP/remotesaf514af7796e/DSCI-310-dsci-310-group-02-pkg-4da8e00/DESCRIPTION’ ... OK
+#> * preparing ‘wineclassify’:
+#> * checking DESCRIPTION meta-information ... OK
+#> * checking for LF line-endings in source and make files and shell scripts
+#> * checking for empty or unneeded directories
+#> * building ‘wineclassify_0.0.0.9000.tar.gz’
+#> Installing package into '/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpI67gg2/temp_libpatha1d9488f66cd'
+#> (as 'lib' is unspecified)
 ```
 
 ## Functions
@@ -93,8 +101,13 @@ the count of each category.
 
 ``` r
 library(wineclassify)
-## basic example code
-hist_plot(iris, "Species")
+
+hist_plot(d, "alcohol")
+#> Warning: The following aesthetics were dropped during statistical transformation: fill
+#> ℹ This can happen when ggplot fails to infer the correct grouping structure in
+#>   the data.
+#> ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+#>   variable into a factor?
 ```
 
 <img src="man/figures/README_histogram-1.png" width="100%" />
@@ -130,12 +143,12 @@ model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 #> ── Model ───────────────────────────────────────────────────────────────────────
 #> 
 #> Call:
-#> kknn::train.kknn(formula = ..y ~ ., data = data, ks = min_rows(5L,     data, 5), kernel = ~"rectangular")
+#> kknn::train.kknn(formula = ..y ~ ., data = data, ks = min_rows(13L,     data, 5), kernel = ~"rectangular")
 #> 
 #> Type of response variable: nominal
-#> Minimal misclassification: 0.05333333
+#> Minimal misclassification: 0.03333333
 #> Best kernel: rectangular
-#> Best k: 5
+#> Best k: 13
 ```
 
 ### model_results()
@@ -154,6 +167,6 @@ model_results(ex_test, ex_model, "Species")
 #>             Truth
 #> Prediction   setosa versicolor virginica
 #>   setosa         13          0         0
-#>   versicolor      0         13         1
-#>   virginica       0          0        12
+#>   versicolor      0         12         1
+#>   virginica       0          1        12
 ```

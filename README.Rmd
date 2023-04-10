@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 ![](https://github.com/DSCI-310/dsci-310-group-02-pkg/actions/workflows/test-coverage.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-02-pkg/branch/main/graph/badge.svg?token=mxvyLcLIB8)](https://codecov.io/gh/DSCI-310/dsci-310-group-02-pkg)
 
+The goal of the wineclassify package aims to use R to help others classify the different types of quality of wine based on a numerous amount of variables. The package also includes functions such as corr_plot, hist_plot and other functions that allows the user to visualize and analyze the given data set. 
+The package is similar to the tidyverse package as this package also uses ggplot2, tidymodels, recipes, workflows and etc. The wineclassify only targets the necessary packages used in tidyverse thus making it simplier and more straightforward to use. 
 <!-- badges: end -->
 
 The goal of `wineclassify` package is to help the users conduct a KNN classification project from the start. It includes the functions to load the dataset, visualize the data with histogram and correlation matrix, build the KNN model and plot the confusion matrix to evaluate the performance of the model.
@@ -51,8 +53,8 @@ d
 The function `hist_plot()` plots a histogram given the data that shows the count of each category.
 ```{r histogram}
 library(wineclassify)
-## basic example code
-hist_plot(iris, "Species")
+
+hist_plot(d, "alcohol")
 ```
 
 ### corr_plot()
