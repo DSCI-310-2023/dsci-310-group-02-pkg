@@ -22,16 +22,16 @@
 
 model_results <- function(test_data, model, col){
 
-if(!is.data.frame(test_data)){
-  stop("'test_data' must be a dataframe")
-}
+  if(!is.data.frame(test_data)){
+    stop("'test_data' must be a dataframe")
+  }
 
-if(!is.list(model)){
-  stop("'model' must be a list")
-}
+  if(!is.list(model)){
+    stop("'model' must be a list")
+  }
 
-if(!is.character(col)){
-  stop("'col' must be the column name of the response variable in string type")
+  if(!is.character(col)){
+    stop("'col' must be the column name of the response variable in string type")
 }
 
 prediction <- predict(model, test_data)

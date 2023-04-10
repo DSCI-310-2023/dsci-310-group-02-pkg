@@ -7,6 +7,7 @@
 #' @import parsnip
 #' @import tune
 #' @import workflows
+#' @import tidymodels
 #'
 #' @param train_data The training data for the model
 #' @param recipe The recipe for the data to build model
@@ -17,7 +18,7 @@
 #'
 #' @examples
 #' model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
-
+#'
 model_build <- function(train_data, recipe, col){
 
   if(!is.data.frame(train_data)){
