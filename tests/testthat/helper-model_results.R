@@ -1,5 +1,6 @@
 library(rsample)
 library(recipes)
+library(tidymodels)
 data <- iris
 split <- initial_split(iris, prop = 0.75, strata = Species)
 test_testing <- testing(split)
