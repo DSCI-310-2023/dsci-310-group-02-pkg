@@ -19,12 +19,14 @@ knitr::opts_chunk$set(
 ![](https://github.com/DSCI-310/dsci-310-group-02-pkg/actions/workflows/test-coverage.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/DSCI-310/dsci-310-group-02-pkg/branch/main/graph/badge.svg?token=mxvyLcLIB8)](https://codecov.io/gh/DSCI-310/dsci-310-group-02-pkg)
 
+The goal of the wineclassify package aims to use R to help others classify the different types of quality of wine based on a numerous amount of variables. The package also includes functions such as corr_plot, hist_plot and other functions that allows the user to visualize and analyze the given data set. 
+The package is similar to the tidyverse package as this package also uses ggplot2, tidymodels, recipes, workflows and etc. The wineclassify only targets the necessary packages used in tidyverse thus making it simplier and more straightforward to use. 
 <!-- badges: end -->
 
 # Installation
 ``` {r}
-# install.packages("devtools")
-#devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
+#install.packages("devtools")
+devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 ```
 
 # Functions
@@ -33,14 +35,19 @@ The function data_load() takes in the URL of the dataset as the first paramter a
 ```{r load}
 library(wineclassify)
 ## basic example code
-d <- data_load(iris,";")
+d <- data_load("https://raw.githubusercontent.com/kashish1928/white_wine_dataset/main/winequality-white.csv",";")
 d
 ```
 
 The function hist_plot() plots a histogram given the data and the category that the visualization would like to be based on
 ```{r histogram}
 library(wineclassify)
-## basic example code
-hist_plot(iris, "Species")
+
+hist_plot(d, "alcohol")
 ```
 
+The function corr_plot shows a correlation plot between all the given variables for the model 
+```{r corr}
+library(wineclassify)
+corr_plot(d)
+```
