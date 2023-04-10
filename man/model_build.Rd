@@ -11,14 +11,14 @@ model_build(train_data, recipe, col)
 
 \item{recipe}{The recipe for the data to build model}
 
-\item{pred}{The column name of the response variable}
+\item{col}{The column name of the response variable}
 }
 \value{
 A fitted KNN model using the most accurate K value
 }
 \description{
-Build the KNN model with the highest accuracy K value
+Build the KNN model using the most accurate K value
 }
 \examples{
-model_build(iris, recipes:recipe(Species ~., data = iris))
+model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 }

@@ -10,15 +10,17 @@
 #'
 #' @param train_data The training data for the model
 #' @param recipe The recipe for the data to build model
-#' @param pred The column name of the response variable
+#' @param col The column name of the response variable
 #'
 #' @return A fitted KNN model using the most accurate K value
 #' @export
 #'
 #' @examples
-#' model_build(iris, recipe(Species ~., data = iris), "Species")
+#' model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 
 model_build <- function(train_data, recipe, col){
+
+  neighbors <- NULL
 
   vfold <- vfold_cv(train_data, v = 10, strata = col)
   knn_tune <- nearest_neighbor(
@@ -34,6 +36,7 @@ model_build <- function(train_data, recipe, col){
     collect_metrics()
 
   # Find the most accurate K value
+  .metric <- NULL
   accuracies <- knn_results %>%
     filter(.metric == "accuracy")
 
