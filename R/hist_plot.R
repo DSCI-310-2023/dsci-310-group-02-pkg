@@ -33,3 +33,4 @@ hist_plot <- function(data, grp_var){
 
   return(categorical_distribution)
 }
+
