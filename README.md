@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# WINECLASSIFY
+# wineclassify
 
 <!-- badges: start -->
 
@@ -18,19 +18,47 @@ recipes, workflows and etc. The wineclassify only targets the necessary
 packages used in tidyverse thus making it simplier and more
 straightforward to use. <!-- badges: end -->
 
-# Installation
+The goal of `wineclassify` package is to help the users conduct a KNN
+classification project from the start. It includes the functions to load
+the dataset, visualize the data with histogram and correlation matrix,
+build the KNN model and plot the confusion matrix to evaluate the
+performance of the model.
+
+## Installation
+
+You can install the development version of `wineclassify` from
+[GitHub](https://github.com/) with:
 
 ``` r
-#install.packages("devtools")
+# install.packages("devtools")
 devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
-#> Skipping install of 'wineclassify' from a github remote, the SHA1 (5397c9a5) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+#> Downloading GitHub repo DSCI-310/dsci-310-group-02-pkg@HEAD
+#> 
+#> ── R CMD build ─────────────────────────────────────────────────────────────────
+#> * checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpnOQHcP/remotesaf514af7796e/DSCI-310-dsci-310-group-02-pkg-4da8e00/DESCRIPTION’ ... OK
+#> * preparing ‘wineclassify’:
+#> * checking DESCRIPTION meta-information ... OK
+#> * checking for LF line-endings in source and make files and shell scripts
+#> * checking for empty or unneeded directories
+#> * building ‘wineclassify_0.0.0.9000.tar.gz’
+#> Installing package into '/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpI67gg2/temp_libpatha1d9488f66cd'
+#> (as 'lib' is unspecified)
 ```
 
-# Functions
+## Functions
 
-The function data_load() takes in the URL of the dataset as the first
-paramter and the seperator as the second parameter
+- `data_load()`
+- `hist_plot()`
+- `corr_plot()`
+- `model_build()`
+- `model_results()`
+
+## Usage
+
+### data_load()
+
+The function `data_load()` takes in the URL of the dataset as the first
+parameter and the separator as the second parameter.
 
 ``` r
 library(wineclassify)
@@ -38,7 +66,7 @@ library(wineclassify)
 #>   method from   
 #>   +.gg   ggplot2
 ## basic example code
-d <- data_load("https://raw.githubusercontent.com/kashish1928/white_wine_dataset/main/winequality-white.csv",";")
+d <- data_load("https://raw.githubusercontent.com/kashish1928/white_wine_dataset/main/winequality-white.csv", ";")
 #> Rows: 4898 Columns: 12
 #> ── Column specification ────────────────────────────────────────────────────────
 #> Delimiter: ";"
@@ -66,8 +94,10 @@ d
 #> #   alcohol <dbl>, quality <dbl>
 ```
 
-The function hist_plot() plots a histogram given the data and the
-category that the visualization would like to be based on
+### hist_plot()
+
+The function `hist_plot()` plots a histogram given the data that shows
+the count of each category.
 
 ``` r
 library(wineclassify)
@@ -82,12 +112,61 @@ hist_plot(d, "alcohol")
 
 <img src="man/figures/README_histogram-1.png" width="100%" />
 
-The function corr_plot shows a correlation plot between all the given
-variables for the model
+### corr_plot()
+
+The function `corr_plot()` plots a correlation matrix with heatmap from
+the variable pairs in the given data.
 
 ``` r
 library(wineclassify)
-corr_plot(d)
+## basic example code
+corr_plot(mtcars)
 ```
 
-<img src="man/figures/README_corr-1.png" width="100%" />
+<img src="man/figures/README_unnamed-chunk-3-1.png" width="100%" />
+
+### model_build()
+
+The function `model_build()` builds the KNN model using the most
+accurate K value.
+
+``` r
+library(wineclassify)
+model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
+#> ══ Workflow [trained] ══════════════════════════════════════════════════════════
+#> Preprocessor: Recipe
+#> Model: nearest_neighbor()
+#> 
+#> ── Preprocessor ────────────────────────────────────────────────────────────────
+#> 0 Recipe Steps
+#> 
+#> ── Model ───────────────────────────────────────────────────────────────────────
+#> 
+#> Call:
+#> kknn::train.kknn(formula = ..y ~ ., data = data, ks = min_rows(13L,     data, 5), kernel = ~"rectangular")
+#> 
+#> Type of response variable: nominal
+#> Minimal misclassification: 0.03333333
+#> Best kernel: rectangular
+#> Best k: 13
+```
+
+### model_results()
+
+The function `model_results()` creates the confusion matrix of the
+fitted KNN model to assess performance.
+
+``` r
+library(wineclassify)
+split <- rsample::initial_split(iris, prop = 0.75, strata = Species)
+ex_test <- rsample::testing(split)
+ex_train <- rsample::training(split)
+ex_recipe <- recipes::recipe(Species ~., data = ex_train)
+ex_model <- model_build(ex_train, ex_recipe, "Species")
+model_results(ex_test, ex_model, "Species")
+#>             Truth
+#> Prediction   setosa versicolor virginica
+#>   setosa         13          0         0
+#>   versicolor      0         12         1
+#>   virginica       0          1        12
+```

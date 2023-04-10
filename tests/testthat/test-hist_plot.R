@@ -1,7 +1,7 @@
 library(ggplot2)
 library(testthat)
 library(vdiffr)
-library(tidyverse)
+
 # test input
 testthat::test_that("data_plot should return error when the data type of input
                     argument is wrong", {
