@@ -18,9 +18,21 @@
 #' ex_train <- rsample::training(split)
 #' ex_recipe <- recipes::recipe(Species ~., data = ex_train)
 #' ex_model <- model_build(ex_train, ex_recipe, "Species")
-#' model_result(ex_test, ex_model, "Species")
+#' model_results(ex_test, ex_model, "Species")
 
-model_result <- function(test_data, model, col){
+model_results <- function(test_data, model, col){
+
+if(!is.data.frame(test_data)){
+  stop("'test_data' must be a dataframe")
+}
+
+if(!is.list(model)){
+  stop("'model' must be a list")
+}
+
+if(!is.character(col)){
+  stop("'col' must be the column name of the response variable in string type")
+}
 
 prediction <- predict(model, test_data)
 bind_cols(test_data)

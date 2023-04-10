@@ -3,7 +3,7 @@
 export(corr_plot)
 export(hist_plot)
 export(model_build)
-export(model_result)
+export(model_results)
 import(GGally)
 import(dplyr)
 import(ggplot2)
