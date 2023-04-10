@@ -10,3 +10,4 @@ library(testthat)
 library(wineclassify)
 
 test_check("wineclassify")
+
