@@ -17,7 +17,6 @@ Imports:
     dplyr,
     GGally,
     ggplot2,
-    magrittr,
     parsnip,
     recipes,
     rsample,
