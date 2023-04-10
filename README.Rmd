@@ -24,13 +24,13 @@ knitr::opts_chunk$set(
 # Installation
 ``` {r}
 # install.packages("devtools")
-devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
+#devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 ```
 
 # Functions
 
 The function data_load() takes in the URL of the dataset as the first paramter and the seperator as the second parameter
-```{r raw}
+```{r load}
 library(wineclassify)
 ## basic example code
 d <- data_load(iris,";")
@@ -38,7 +38,7 @@ d
 ```
 
 The function hist_plot() plots a histogram given the data and the category that the visualization would like to be based on
-```{r raw}
+```{r histogram}
 library(wineclassify)
 ## basic example code
 hist_plot(iris, "Species")
