@@ -17,8 +17,12 @@ Imports:
     dplyr,
     GGally,
     ggplot2,
-    magrittr,
-    vdiffr
+    parsnip,
+    recipes,
+    rsample,
+    tune,
+    vdiffr,
+    workflows
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
