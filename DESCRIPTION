@@ -18,6 +18,7 @@ Imports:
     GGally,
     ggplot2,
     parsnip,
+    RCurl,
     readr,
     recipes,
     rsample,

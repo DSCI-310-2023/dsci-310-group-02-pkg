@@ -3,6 +3,7 @@
 #' Read the data set from the URL and return it as a data frame
 #'
 #' @importFrom readr read_delim
+#' @importFrom RCurl url.exists
 #'
 #' @param url The URL (in string) from where to download the data
 #' @param sperator The separator (in string) used in the file
@@ -16,6 +17,15 @@
 #' ";")
 
 data_load <- function(url, sperator = ';') {
+
+  if(!url.exists(url)){
+    stop("'url' must be a valid url. The request failed")
+  }
+
+  if(!is.character(sperator)){
+    stop("'sperator' must be a string")
+  }
+
   data <- read_delim(url, delim = sperator)
   return(data)
 }
