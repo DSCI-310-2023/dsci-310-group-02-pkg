@@ -21,4 +21,5 @@ Build the KNN model using the most accurate K value
 }
 \examples{
 model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
+
 }
