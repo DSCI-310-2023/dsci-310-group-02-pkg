@@ -41,7 +41,7 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 
 ## Usage
 ### data_load()
-The function `data_load()` takes in the URL of the dataset as the first parameter and the separator as the second parameter.
+The function `data_load()` takes in the URL of the data set as the first parameter and the separator as the second parameter.
 ```{r load}
 library(wineclassify)
 ## basic example code

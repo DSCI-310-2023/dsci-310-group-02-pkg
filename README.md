@@ -35,13 +35,13 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 #> Downloading GitHub repo DSCI-310/dsci-310-group-02-pkg@HEAD
 #> 
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpTRLaCb/remotesb8ba52b944d9/DSCI-310-dsci-310-group-02-pkg-e6c5aa3/DESCRIPTION’ ... OK
+#> * checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmphdK9tv/remotesc991624e949e/DSCI-310-dsci-310-group-02-pkg-e6c5aa3/DESCRIPTION’ ... OK
 #> * preparing ‘wineclassify’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
 #> * checking for empty or unneeded directories
 #> * building ‘wineclassify_0.0.0.9000.tar.gz’
-#> Installing package into '/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpI67gg2/temp_libpatha1d9fa9dc64'
+#> Installing package into '/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpI67gg2/temp_libpatha1d957e40c77'
 #> (as 'lib' is unspecified)
 ```
 
@@ -57,7 +57,7 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 
 ### data_load()
 
-The function `data_load()` takes in the URL of the dataset as the first
+The function `data_load()` takes in the URL of the data set as the first
 parameter and the separator as the second parameter.
 
 ``` r
@@ -143,12 +143,12 @@ model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 #> ── Model ───────────────────────────────────────────────────────────────────────
 #> 
 #> Call:
-#> kknn::train.kknn(formula = ..y ~ ., data = data, ks = min_rows(7L,     data, 5), kernel = ~"rectangular")
+#> kknn::train.kknn(formula = ..y ~ ., data = data, ks = min_rows(14L,     data, 5), kernel = ~"rectangular")
 #> 
 #> Type of response variable: nominal
-#> Minimal misclassification: 0.04
+#> Minimal misclassification: 0.03333333
 #> Best kernel: rectangular
-#> Best k: 7
+#> Best k: 14
 ```
 
 ### model_results()
@@ -167,8 +167,8 @@ model_results(ex_test, ex_model, "Species")
 #>             Truth
 #> Prediction   setosa versicolor virginica
 #>   setosa         13          0         0
-#>   versicolor      0         12         0
-#>   virginica       0          1        13
+#>   versicolor      0         12         2
+#>   virginica       0          1        11
 ```
 
 ## Contributing
