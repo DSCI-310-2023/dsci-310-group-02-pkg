@@ -8,6 +8,13 @@
 \description{
 This package includes the functions that can conduct the descriptive analysis by creating the histogram of the count of categorical variables and the correlation matrix. It also provides users to create a KNN classification model and assess the model's performance.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://dsci-310.github.io/dsci-310-group-02-pkg/}
+}
+
+}
 \author{
 \strong{Maintainer}: Eric HUANG \email{erichsy@student.ubc.ca}
 
