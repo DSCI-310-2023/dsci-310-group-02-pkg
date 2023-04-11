@@ -1,6 +1,6 @@
 Package: wineclassify
 Title: Create the descriptive analysis and classification model of the wine dataset
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     c(person("Eric", "HUANG", , "erichsy@student.ubc.ca", role = c("aut", "cre")),
     person("Kashish", "Joshipura", , "kashishjoshipura@gmail.com", role = c("aut")),
