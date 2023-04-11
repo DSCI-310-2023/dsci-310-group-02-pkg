@@ -1,0 +1,82 @@
+---
+title: "wineclassify"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{wineclassify}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This document contains examples and description explaining how `wineclassify` package can be used to help the users to build a KNN classification model.
+
+In general, the `wineclassify` package perform the following tasks to make classification analysis easier:
+* Read the csv dataset from the website and turn it into a data frame
+* Create a histogram and a confusion matrix with the heat map for the exploratory data analysis
+* Build KNN model with the most accurate K value and return its performance with a confusion matrix
+
+## Functions
+The package includes the following functions, which can be divided into three parts:
+* 1. Data loading: `data_load()` 
+* 2. Visualization: `hist_plot()`, `corr_plot()`
+* 3. Model building and evaluating: `model_build()`, `model_results()`
+
+## example
+To explain how the package works, we use the white wine data set stored in the repository [Github](https://raw.githubusercontent.com/kashish1928/white_wine_dataset/main/winequality-white.csv) to perform the following tasks.
+
+### Initialization
+```{r setup}
+library(wineclassify)
+```
+
+### 1. Data loading
+#### `data_load()`: Read the data set
+The function `data_load()` can help the user download the csv data set from the website and turn it into a data frame.
+```{r load}
+library(wineclassify)
+## basic example code
+d <- data_load("https://raw.githubusercontent.com/kashish1928/white_wine_dataset/main/winequality-white.csv", ";")
+d
+```
+
+### 2. Visualization
+#### hist_plot()
+The function `hist_plot()` plots a histogram given the data that shows the count of each category.
+```{r histogram, warning=FALSE}
+library(wineclassify)
+hist_plot(d, "quality")
+```
+
+#### corr_plot()
+The function `corr_plot()` plots a correlation matrix with heatmap from the variable pairs in the given data.
+```{r}
+library(wineclassify)
+## basic example code
+corr_plot(mtcars)
+```
+
+### 3. Model building and evaluating
+#### model_build()
+The function `model_build()` builds the KNN model using the most accurate K value.
+```{r}
+library(wineclassify)
+model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
+```
+
+#### model_results()
+The function `model_results()` creates the confusion matrix of the fitted KNN model to assess performance.
+```{r}
+library(wineclassify)
+split <- rsample::initial_split(iris, prop = 0.75, strata = Species)
+ex_test <- rsample::testing(split)
+ex_train <- rsample::training(split)
+ex_recipe <- recipes::recipe(Species ~., data = ex_train)
+ex_model <- model_build(ex_train, ex_recipe, "Species")
+model_results(ex_test, ex_model, "Species")
+```
