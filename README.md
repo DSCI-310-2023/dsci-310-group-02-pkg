@@ -35,13 +35,13 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 #> Downloading GitHub repo DSCI-310/dsci-310-group-02-pkg@HEAD
 #> 
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpBGlyz8/remotescda16ea153a7/DSCI-310-dsci-310-group-02-pkg-e6c5aa3/DESCRIPTION’ ... OK
+#> * checking for file ‘/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/Rtmpx21hmG/remotesd0e02462bd4d/DSCI-310-dsci-310-group-02-pkg-e6c5aa3/DESCRIPTION’ ... OK
 #> * preparing ‘wineclassify’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
 #> * checking for empty or unneeded directories
 #> * building ‘wineclassify_0.0.0.9000.tar.gz’
-#> Installing package into '/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpI67gg2/temp_libpatha1d95a854436'
+#> Installing package into '/private/var/folders/cw/4ltklxm10r57c9rl1zj3nsbw0000gn/T/RtmpI67gg2/temp_libpatha1d964de6b'
 #> (as 'lib' is unspecified)
 ```
 
@@ -56,9 +56,6 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 ## Usage
 
 ### data_load()
-
-The function `data_load()` takes in the URL of the data set as the first
-parameter and the separator as the second parameter.
 
 ``` r
 library(wineclassify)
@@ -96,9 +93,6 @@ d
 
 ### hist_plot()
 
-The function `hist_plot()` plots a histogram given the data that shows
-the count of each category.
-
 ``` r
 library(wineclassify)
 hist_plot(d, "quality")
@@ -107,9 +101,6 @@ hist_plot(d, "quality")
 <img src="man/figures/README_histogram-1.png" width="100%" />
 
 ### corr_plot()
-
-The function `corr_plot()` plots a correlation matrix with heatmap from
-the variable pairs in the given data.
 
 ``` r
 library(wineclassify)
@@ -120,9 +111,6 @@ corr_plot(mtcars)
 <img src="man/figures/README_unnamed-chunk-3-1.png" width="100%" />
 
 ### model_build()
-
-The function `model_build()` builds the KNN model using the most
-accurate K value.
 
 ``` r
 library(wineclassify)
@@ -147,9 +135,6 @@ model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 
 ### model_results()
 
-The function `model_results()` creates the confusion matrix of the
-fitted KNN model to evaluate its performance.
-
 ``` r
 library(wineclassify)
 split <- rsample::initial_split(iris, prop = 0.75, strata = Species)
@@ -164,6 +149,10 @@ model_results(ex_test, ex_model, "Species")
 #>   versicolor      0         12         0
 #>   virginica       0          1        13
 ```
+
+For the detailed information about how to use the `wineclassify`
+function, please refer to the [Vignette
+Docs](https://github.com/DSCI-310/dsci-310-group-02-pkg/blob/main/vignettes/wineclassify.Rmd)
 
 ## Contributing
 

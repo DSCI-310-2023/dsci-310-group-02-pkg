@@ -41,7 +41,6 @@ devtools::install_github("DSCI-310/dsci-310-group-02-pkg")
 
 ## Usage
 ### data_load()
-The function `data_load()` takes in the URL of the data set as the first parameter and the separator as the second parameter.
 ```{r load}
 library(wineclassify)
 ## basic example code
@@ -50,14 +49,12 @@ d
 ```
 
 ### hist_plot()
-The function `hist_plot()` plots a histogram given the data that shows the count of each category.
 ```{r histogram, warning=FALSE}
 library(wineclassify)
 hist_plot(d, "quality")
 ```
 
 ### corr_plot()
-The function `corr_plot()` plots a correlation matrix with heatmap from the variable pairs in the given data.
 ```{r}
 library(wineclassify)
 ## basic example code
@@ -65,14 +62,12 @@ corr_plot(mtcars)
 ```
 
 ### model_build()
-The function `model_build()` builds the KNN model using the most accurate K value.
 ```{r}
 library(wineclassify)
 model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 ```
 
 ### model_results()
-The function `model_results()` creates the confusion matrix of the fitted KNN model to evaluate its performance.
 ```{r}
 library(wineclassify)
 split <- rsample::initial_split(iris, prop = 0.75, strata = Species)
@@ -82,6 +77,9 @@ ex_recipe <- recipes::recipe(Species ~., data = ex_train)
 ex_model <- model_build(ex_train, ex_recipe, "Species")
 model_results(ex_test, ex_model, "Species")
 ```
+
+For the detailed information about how to use the `wineclassify` function, 
+please refer to the [Vignette Docs](https://github.com/DSCI-310/dsci-310-group-02-pkg/blob/main/vignettes/wineclassify.Rmd)
 
 ## Contributing
 We welcome and appreciate the contributions to the `wineclassify` function. Please read [here](https://github.com/DSCI-310/dsci-310-group-02-pkg/blob/main/CONTRIBUTION.md) on how to contribute to the package.
