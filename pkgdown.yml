@@ -1,0 +1,10 @@
+pandoc: 2.19.2
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  wineclassify: wineclassify.html
+last_built: 2023-04-11T04:11Z
+urls:
+  reference: https://dsci-310.github.io/dsci-310-group-02-pkg/reference
+  article: https://dsci-310.github.io/dsci-310-group-02-pkg/articles
+
