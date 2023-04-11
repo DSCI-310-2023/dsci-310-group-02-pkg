@@ -51,10 +51,9 @@ d
 
 ### hist_plot()
 The function `hist_plot()` plots a histogram given the data that shows the count of each category.
-```{r histogram}
+```{r histogram, warning=FALSE}
 library(wineclassify)
-
-hist_plot(d, "alcohol")
+hist_plot(d, "quality")
 ```
 
 ### corr_plot()
@@ -73,7 +72,7 @@ model_build(iris, recipes::recipe(Species ~., data = iris), "Species")
 ```
 
 ### model_results()
-The function `model_results()` creates the confusion matrix of the fitted KNN model to assess performance.
+The function `model_results()` creates the confusion matrix of the fitted KNN model to evaluate its performance.
 ```{r}
 library(wineclassify)
 split <- rsample::initial_split(iris, prop = 0.75, strata = Species)
